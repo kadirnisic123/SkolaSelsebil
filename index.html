@@ -1348,6 +1348,145 @@
       height: 18px
     }
 
+    /* O ŠKOLI */
+    #o-skoli {
+      background: var(--ow);
+      padding: 5rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .os-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2.5rem;
+    }
+
+    .os-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .os-stat-card {
+      background: linear-gradient(135deg, var(--bd), var(--bm));
+      border-radius: 18px;
+      padding: 1.5rem 1.2rem;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(17,85,160,.2);
+    }
+
+    .os-stat-card .os-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+      display: block;
+      margin-bottom: .3rem;
+    }
+
+    .os-stat-card .os-lbl {
+      font-size: .8rem;
+      opacity: .88;
+      line-height: 1.4;
+    }
+
+    .os-hafiz {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, var(--bdp), var(--bd));
+      border-radius: 18px;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(17,85,160,.25);
+    }
+
+    .os-hafiz i {
+      font-size: 2.5rem;
+      opacity: .85;
+      flex-shrink: 0;
+    }
+
+    .os-hafiz p {
+      font-size: 1rem;
+      line-height: 1.5;
+      opacity: .95;
+    }
+
+    .os-hafiz strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: .2rem;
+    }
+
+    .os-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .os-block {
+      background: #fff;
+      border-radius: 18px;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 6px 24px rgba(17,85,160,.08);
+      border-left: 4px solid var(--bm);
+    }
+
+    .os-block h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--bdp);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+
+    .os-block h4 i {
+      color: var(--bm);
+      font-size: 1rem;
+    }
+
+    .os-block ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+    }
+
+    .os-block ul li {
+      font-size: .92rem;
+      color: var(--tl);
+      line-height: 1.55;
+      padding-left: 1.4rem;
+      position: relative;
+    }
+
+    .os-block ul li::before {
+      content: '▪';
+      position: absolute;
+      left: 0;
+      color: var(--bm);
+      font-size: .8rem;
+      top: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .os-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .os-stats { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .os-stats { grid-template-columns: 1fr; }
+    }
+
     /* DRUŠTVENE MREŽE CTA */
     .sm-cta {
       background: linear-gradient(135deg, var(--bdp) 0%, var(--bd) 100%);
@@ -1591,6 +1730,7 @@
       <li><a href="#cjenovnik">Cijena</a></li>
       <li><a href="#radno-vrijeme">Raspored</a></li>
       <li><a href="#lokacija">Lokacija</a></li>
+      <li><a href="#o-skoli">O školi</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
     <button class="hamburger" id="ham" aria-label="Otvori meni">
@@ -1606,6 +1746,7 @@
       <li><a href="#cjenovnik" onclick="cm()">Cijena</a></li>
       <li><a href="#radno-vrijeme" onclick="cm()">Raspored</a></li>
       <li><a href="#lokacija" onclick="cm()">Lokacija</a></li>
+      <li><a href="#o-skoli" onclick="cm()">O školi</a></li>
       <li><a href="#kontakt" onclick="cm()">Kontakt</a></li>
     </ul>
   </div>
@@ -1708,8 +1849,6 @@
             <div class="arabic">خيركم من تعلم القرآن وعلمه</div>
             <p style="opacity:.85;line-height:1.7">“Najbolji među vama su oni koji nauče Kur’an i druge njemu podučavaju”</p>
             <hr style="border:none;border-top:1px solid rgba(255,255,255,.2);margin:1.5rem 0">
-            <p style="font-size:.85rem;opacity:.8">„Kur'an je vodič za čovječanstvo i jasan dokaz upute i razlikovanja."
-              — El-Bekare 2:185</p>
           </div>
           <div
             style="margin-top:1.5rem;background:#fff;border-radius:16px;padding:1.5rem;box-shadow:0 8px 30px rgba(17,85,160,.1);text-align:center">
@@ -1744,20 +1883,17 @@
               <div class="team-avatar">K</div>
               <h4>Hafiz Kabil</h4>
               <div class="team-role">Učitelj Kur'ana</div>
-              <p class="team-bio">Iskusan hafiz sa fokusom na pravilno učenje i tedžvid. Posvećuje posebnu pažnju svakom polazniku, prateći tempo i napredak individualno.</p>
-            </div>
+              </div>
             <div class="team-card fu">
               <div class="team-avatar">F</div>
               <h4>Hafiz Ferid</h4>
               <div class="team-role">Učitelj Kur'ana</div>
-              <p class="team-bio">Posvećeni učitelj sa bogatim iskustvom u podučavanju Kur'ana. Poznat po strpljenju i prilagođavanju nastave potrebama svakog učenika.</p>
-            </div>
+              </div>
             <div class="team-card fu">
               <div class="team-avatar">F</div>
               <h4>Hafiz Fatih</h4>
               <div class="team-role">Učitelj Kur'ana</div>
-              <p class="team-bio">Stručnjak za učenje napamet i metodologiju podučavanja. Njegova strast prema Kur'anu inspiriše sve učenike.</p>
-            </div>
+              </div>
           </div>
         </div>
 
@@ -1771,20 +1907,17 @@
               <div class="team-avatar">A</div>
               <h4>Hafiza Aisa</h4>
               <div class="team-role">Učiteljica Kur'ana</div>
-              <p class="team-bio">Posvećena hafiza sa iskustvom u radu sa djecom i odraslima. Koristi kreativne metode kako bi nastava bila privlačna i efikasna.</p>
-            </div>
+             </div>
             <div class="team-card female fu">
               <div class="team-avatar">F</div>
               <h4>Hafiza Fatima</h4>
               <div class="team-role">Učiteljica Kur'ana</div>
-              <p class="team-bio">Iskusna učiteljica sa fokusom na pravilno učenje i izgovor. Njen strpljiv pristup pomaže učenicima da napreduju u svom tempu.</p>
-            </div>
+              </div>
             <div class="team-card female fu">
               <div class="team-avatar">S</div>
               <h4>Profesorica Selma</h4>
               <div class="team-role">Profesorica</div>
-              <p class="team-bio">Visoko obrazovana profesorica sa bogatim pedagoškim iskustvom. Predvodi ženski tim i brine se o kvalitetu nastave.</p>
-            </div>
+              </div>
           </div>
         </div>
       </div>
@@ -1872,7 +2005,7 @@
       <div class="l-grid">
         <div class="map-wrap fu">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d204.2191219322751!2d20.520479836002288!3d43.1425688072451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4756283de66eab45%3A0x2ea7623f36196cd8!2sNovi%20Pazar!5e1!3m2!1sen!2srs!4v1776581939422!5m2!1sen!2srs"
+            src="//www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3650.358997746109!2d20.520603!3d43.142545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDPCsDA4JzMzLjIiTiAyMMKwMzEnMTQuMiJF!5e1!3m2!1sen!2srs!4v1778254502695!5m2!1sen!2srs"
             allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
             title="Lokacija Škole Selsebil u Novom Pazaru">
           </iframe>
@@ -1888,7 +2021,7 @@
             <div>
               <h4>Adresa</h4>
               <p>Srbija,Novi Pazar,8.mart<br>
-                <a href="https://maps.app.goo.gl/mGRq9ZQX3AcoF8jH8" target="_blank">→ Otvori na Google Maps</a>
+                <a href="https://maps.app.goo.gl/qUydQhh6Ndcsey79A" target="_blank">→ Otvori na Google Maps</a>
               </p>
             </div>
           </div>
@@ -1902,19 +2035,6 @@
             <div>
               <h4>WhatsApp</h4>
               <p><a href="https://wa.me/381607325998">+381 60 7325 998</a></p>
-            </div>
-          </div>
-          <div class="i-card">
-            <div class="i-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
-                <circle cx="12" cy="12" r="10" />
-                <polyline points="12 6 12 12 16 14" />
-              </svg>
-            </div>
-            <div>
-              <h4>Radno vrijeme</h4>
-              <p>Pon, Uto, Čet: 10:00 – 18:00<br><span style="font-size:.85rem;color:var(--tl)">Sri, Pet, Sub, Ned:
-                  Zatvoreno</span></p>
             </div>
           </div>
           <div class="i-card">
@@ -1963,6 +2083,70 @@
             <strong><i class="fa-solid fa-circle-info"></i> Informacije o upisu</strong>
             Kontaktirajte nas za više informacija ili upis. Nastava je dostupna za djecu i odrasle, na svim nivoima
             znanja. Termini se prilagođavaju vašem rasporedu.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O ŠKOLI -->
+  <section id="o-skoli">
+    <div class="geo" style="opacity:.06"></div>
+    <div class="si" style="position:relative;z-index:1">
+      <span class="s-tag">O školi</span>
+      <h2 class="s-title">Škola Kur'ana Selsebil</h2>
+      <div class="divider"></div>
+      <p class="s-lead">Osnovana 2013. godine, škola Kur'ana Selsebil posvećena je kvalitetnom vjerskom obrazovanju djece i odraslih u Novom Pazaru i šire.</p>
+
+      <div class="os-grid">
+        <!-- Lijeva strana: statistike -->
+        <div>
+          <div class="os-stats">
+            <div class="os-stat-card">
+              <span class="os-num">550+</span>
+              <span class="os-lbl">djece završilo sufaru</span>
+            </div>
+            <div class="os-stat-card">
+              <span class="os-num">120+</span>
+              <span class="os-lbl">djece položilo Amme džuz napamet</span>
+            </div>
+            <div class="os-stat-card">
+              <span class="os-num">400+</span>
+              <span class="os-lbl">odraslih naučilo sufaru</span>
+            </div>
+            <div class="os-stat-card">
+              <span class="os-num">60+</span>
+              <span class="os-lbl">odraslih naučilo Amme džuz napamet</span>
+            </div>
+            <div class="os-hafiz">
+              <i class="fa-solid fa-star-and-crescent"></i>
+              <p>
+                <strong>Naš najveći uspjeh</strong>
+                2 hafize i 2 hafiza Kur'ana — polaznici koji su cijeli Kur'an pohranili u srce
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desna strana: aktivnosti i literatura -->
+        <div class="os-right">
+          <div class="os-block">
+            <h4><i class="fa-solid fa-calendar-star"></i> Razne aktivnosti tokom godine</h4>
+            <ul>
+              <li>Takmičenje u hifzu za djecu</li>
+              <li>Podjela bajramskih poklona</li>
+              <li>Organizovanje zajedničkog iftara</li>
+              <li>Razna druženja djece</li>
+            </ul>
+          </div>
+          <div class="os-block">
+            <h4><i class="fa-solid fa-book-open"></i> Štampana literatura škole</h4>
+            <ul>
+              <li>Tedžvid — dr Abdullah Basfar</li>
+              <li>Ahlak učača Kur'ana</li>
+              <li>Biografije desetorice učenjaka Kiraeta</li>
+              <li>Najlakši način za memorisanje Kur'ana</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -2019,7 +2203,7 @@
                 d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z" />
             </svg>
           </a>
-          <a href="https://maps.app.goo.gl/mGRq9ZQX3AcoF8jH8" target="_blank" title="Google Maps" aria-label="Lokacija">
+          <a href="https://maps.app.goo.gl/qUydQhh6Ndcsey79A" target="_blank" title="Google Maps" aria-label="Lokacija">
             <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
               <circle cx="12" cy="10" r="3" />
@@ -2044,12 +2228,11 @@
         <h4>Kontakt info</h4>
         <ul>
           <li><a href="https://wa.me/381607325998" target="_blank">+381 60 7325 998</a></li>
-          <li><a href="https://maps.app.goo.gl/mGRq9ZQX3AcoF8jH8" target="_blank">Novi Pazar, Srbija</a></li>
+          <li><a href="https://maps.app.goo.gl/qUydQhh6Ndcsey79A" target="_blank">Novi Pazar, Srbija</a></li>
           <li><a href="https://www.youtube.com/@skolakuranaselsebilnovipazar" target="_blank">YouTube kanal</a></li>
+          <li><a href="https://www.facebook.com/skSelsebil" target="_blank">Facebook stranica</a></li>
+          <li><a href="https://www.instagram.com/skola_selsebil/" target="_blank">Instagram stranica</a></li>
         </ul>
-        <div style="margin-top:1.5rem;font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.7">
-          <i class="fa-regular fa-clock"></i> Pon, Uto, Čet<br>10:00 – 18:00
-        </div>
       </div>
     </div>
     <div class="f-bot">
