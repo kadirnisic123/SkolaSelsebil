@@ -484,7 +484,7 @@
 
     /* KURSEVI */
     #kursevi {
-      background: #fff;
+      background: var(--ow);
       padding: 5rem 2rem
     }
 
@@ -493,101 +493,171 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
       margin-top: 2.5rem;
-      max-width: 1100px;
-      margin-left: auto;
-      margin-right: auto
     }
 
     .k-card {
-      border-radius: 20px;
+      border-radius: 24px;
       overflow: hidden;
-      box-shadow: 0 8px 30px rgba(17, 85, 160, .1);
-      transition: transform .3s, box-shadow .3s;
+      background: #fff;
+      transition: transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s;
       height: 100%;
       display: flex;
       flex-direction: column;
-      background: #fff
+      position: relative;
+      box-shadow: 0 4px 20px rgba(17, 85, 160, .08);
     }
 
     .k-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 16px 60px rgba(17, 85, 160, .2)
+      transform: translateY(-12px);
+      box-shadow: 0 24px 60px rgba(17, 85, 160, .18);
+    }
+
+    .k-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--bm), var(--bl));
+      transform: scaleX(0);
+      transition: transform .4s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .k-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .k-card.g2::before {
+      background: linear-gradient(90deg, var(--bd), var(--bm));
+    }
+
+    .k-card.g3::before {
+      background: linear-gradient(90deg, #1e8449, #82e0aa);
     }
 
     .k-head {
-      padding: 2.5rem 2rem;
-      background: linear-gradient(135deg, var(--bd), var(--bm));
+      padding: 3rem 2rem;
+      background: linear-gradient(145deg, var(--bd) 0%, var(--bm) 100%);
       color: #fff;
       text-align: center;
-      min-height: 200px;
+      min-height: 180px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    .k-head.g2 {
-      background: linear-gradient(135deg, #1155a0, #0a2e5e)
+    .k-head::after {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: rgba(255,255,255,.05);
+      border-radius: 50%;
+      bottom: -80px;
+      right: -80px;
     }
 
-    .k-head.g3 {
-      background: linear-gradient(135deg, #1e8449, #145c2f)
+    .k-card.g2 .k-head {
+      background: linear-gradient(145deg, #0a2e5e 0%, #1155a0 100%);
     }
 
-    .k-emoji {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      display: block;
-      line-height: 1
+    .k-card.g3 .k-head {
+      background: linear-gradient(145deg, #145c2f 0%, #1e8449 100%);
     }
 
-    .k-emoji i {
-      font-size: 3rem;
+    .k-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, .15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+      backdrop-filter: blur(10px);
+      transition: transform .3s;
+    }
+
+    .k-card:hover .k-icon {
+      transform: scale(1.1);
+    }
+
+    .k-icon i {
+      font-size: 2.2rem;
+      color: #fff;
     }
 
     .k-head h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       margin: 0;
       line-height: 1.3;
-      font-weight: 700
+      font-weight: 700;
     }
 
     .k-body {
-      padding: 2rem;
+      padding: 2rem 1.8rem 1.8rem;
       background: #fff;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
-      justify-content: space-between
+      justify-content: space-between;
+      text-align: center;
     }
 
     .k-body p {
       font-size: .95rem;
-      color: var(--t);
-      line-height: 1.65;
-      margin-bottom: 0;
-      font-weight: 500
+      color: var(--tl);
+      line-height: 1.7;
+      margin: 0 0 1.2rem 0;
     }
 
     .k-tag {
       display: inline-flex;
       align-items: center;
-      gap: .4rem;
-      margin-top: 1.5rem;
+      justify-content: center;
+      gap: .5rem;
       background: var(--ow);
       color: var(--bd);
       font-size: .78rem;
       font-weight: 700;
-      padding: .4rem 1rem;
+      padding: .5rem 1.2rem;
       border-radius: 50px;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-      width: fit-content
+      letter-spacing: .03em;
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    .k-card.g2 .k-tag {
+      color: #0a2e5e;
+    }
+
+    .k-card.g3 .k-tag {
+      color: #145c2f;
     }
 
     .k-tag i {
-      font-size: .85rem
+      font-size: .85rem;
+    }
+
+    .k-number {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: .9rem;
+      z-index: 1;
     }
 
 /* RESPONSIVE PODEŠAVANJA */
@@ -595,18 +665,27 @@
 /* Za Tablete (ispod 992px širine) */
 @media (max-width: 992px) {
   .k-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 kolone umesto 3 */
-    gap: 1.2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
 }
 
 /* Za Telefone (ispod 600px širine) */
 @media (max-width: 600px) {
   .k-grid {
-    grid-template-columns: 1fr; /* 1 kolona - kartice idu jedna ispod druge */
+    grid-template-columns: 1fr;
     gap: 1.5rem;
-    padding: 0 15px; /* Malo prostora sa strana da ne dodiruju ivice ekrana */
   }
+
+  .k-head {
+    padding: 2rem 1.5rem;
+    min-height: 160px;
+  }
+
+  .k-body {
+    padding: 1.5rem 1.2rem;
+  }
+}
 
   .k-head {
     padding: 1.5rem 1rem;
@@ -619,7 +698,7 @@
   .k-emoji {
     font-size: 2.2rem;
   }
-}
+  
     /* UČITELJI */
     #ucitelji {
       background: var(--ow)
@@ -1348,100 +1427,51 @@
       height: 18px
     }
 
-    /* DRUŠTVENE MREŽE CTA */
-    .sm-cta {
-      background: linear-gradient(135deg, var(--bdp) 0%, var(--bd) 100%);
-      padding: 4rem 2rem;
+    /* YOUTUBE CTA */
+    .yt-cta {
+      background: linear-gradient(135deg, #fff 0%, #f4f8fc 100%);
+      border-top: 1px solid #e4eef8;
+      border-bottom: 1px solid #e4eef8
     }
 
-    .sm-cta-wrap {
+    .yt-cta-wrap {
       max-width: 900px;
       margin: 0 auto;
       text-align: center;
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 12px 35px rgba(17, 85, 160, .1)
     }
 
-    .sm-cta-wrap h3 {
-      color: #fff;
-      margin-bottom: .5rem;
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
+    .yt-cta-wrap h3 {
+      color: var(--bdp);
+      margin-bottom: .4rem;
+      font-family: 'Playfair Display', serif
     }
 
-    .sm-cta-wrap p {
-      color: rgba(255,255,255,.8);
-      margin-bottom: 2rem;
-      font-size: 1.05rem;
+    .yt-cta-wrap p {
+      color: var(--tl);
+      margin-bottom: 1.2rem
     }
 
-    .sm-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .sm-btn {
+    .btn-yt {
       display: inline-flex;
       align-items: center;
-      gap: .7rem;
-      text-decoration: none;
-      font-weight: 700;
-      padding: 1rem 2rem;
-      border-radius: 50px;
-      transition: transform .3s, box-shadow .3s;
-      font-size: 1rem;
-    }
-
-    .sm-btn:hover {
-      transform: translateY(-4px);
-    }
-
-    .sm-btn.youtube {
+      gap: .55rem;
       background: #ff0000;
       color: #fff;
-      box-shadow: 0 8px 25px rgba(255, 0, 0, .4);
+      text-decoration: none;
+      font-weight: 700;
+      padding: .8rem 1.35rem;
+      border-radius: 999px;
+      transition: transform .2s, box-shadow .2s, background .2s
     }
 
-    .sm-btn.youtube:hover {
-      background: #cc0000;
-      box-shadow: 0 12px 35px rgba(255, 0, 0, .5);
-    }
-
-    .sm-btn.instagram {
-      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-      color: #fff;
-      box-shadow: 0 8px 25px rgba(220, 39, 67, .4);
-    }
-
-    .sm-btn.instagram:hover {
-      box-shadow: 0 12px 35px rgba(220, 39, 67, .5);
-    }
-
-    .sm-btn.facebook {
-      background: #1877f2;
-      color: #fff;
-      box-shadow: 0 8px 25px rgba(24, 119, 242, .4);
-    }
-
-    .sm-btn.facebook:hover {
-      background: #166fe5;
-      box-shadow: 0 12px 35px rgba(24, 119, 242, .5);
-    }
-
-    .sm-btn i {
-      font-size: 1.3rem;
-    }
-
-    @media (max-width: 600px) {
-      .sm-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-      .sm-btn {
-        width: 100%;
-        max-width: 280px;
-        justify-content: center;
-      }
+    .btn-yt:hover {
+      background: #d10000;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(209, 0, 0, .3)
     }
 
     .f-col h4 {
@@ -1673,30 +1703,30 @@
       </div>
       <div class="k-grid">
         <div class="k-card fu">
-          <div class="k-head"><span class="k-emoji"><i class="fa-solid fa-book-open"></i></span>
-            <h3>Sufara (Ucenje Harfova)</h3>
+          <div class="k-head"><div class="k-icon"><i class="fa-solid fa-book-open"></i></div>
+            <h3>Sufara (Učenje Harfova)</h3>
           </div>
           <div class="k-body">
-            <p>Metod Noorani Qaida</p><span class="k-tag"><i
-                class="fa-solid fa-star"></i> Za početnike</span>
+            <p>Metod Noorani Qaida — osnova za pravilno učenje arapskih slova i izgovora.</p>
+            <span class="k-tag"><i class="fa-solid fa-star"></i> Za početnike</span>
           </div>
         </div>
-        <div class="k-card fu">
-          <div class="k-head g2"><span class="k-emoji"><i class="fa-solid fa-microphone-lines"></i></span>
+        <div class="k-card g2 fu">
+          <div class="k-head"><div class="k-icon"><i class="fa-solid fa-microphone-lines"></i></div>
             <h3>Tedžvid (Ispravno Učenje)</h3>
           </div>
           <div class="k-body">
-            <p>Tedžvid (Ispravno Učenje)</p><span class="k-tag"><i class="fa-solid fa-chart-line"></i> Srednji
-              nivo</span>
+            <p>Pravila pravilnog učenja Kur'ana — izgovor, melodije i ritam sure.</p>
+            <span class="k-tag"><i class="fa-solid fa-chart-line"></i> Srednji nivo</span>
           </div>
         </div>
-        <div class="k-card fu">
-          <div class="k-head g3"><span class="k-emoji"><i class="fa-solid fa-crown"></i></span>
-            <h3>Hifz(Ucenje sura napamet)</h3>
+        <div class="k-card g3 fu">
+          <div class="k-head"><div class="k-icon"><i class="fa-solid fa-crown"></i></div>
+            <h3>Hifz (Učenje napamet)</h3>
           </div>
           <div class="k-body">
-            <p>Ucenje sura napamet od Amme džuza do kraja Kur'ana</p><span class="k-tag"><i class="fa-solid fa-trophy"></i>
-              Napredni nivo</span>
+            <p>Učenje sura napamet od Amme džuza do kraja Kur'ana uz stručno vođenje.</p>
+            <span class="k-tag"><i class="fa-solid fa-trophy"></i> Napredni nivo</span>
           </div>
         </div>
       </div>
@@ -1907,19 +1937,6 @@
           <div class="i-card">
             <div class="i-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
-                <circle cx="12" cy="12" r="10" />
-                <polyline points="12 6 12 12 16 14" />
-              </svg>
-            </div>
-            <div>
-              <h4>Radno vrijeme</h4>
-              <p>Pon, Uto, Čet: 10:00 – 18:00<br><span style="font-size:.85rem;color:var(--tl)">Sri, Pet, Sub, Ned:
-                  Zatvoreno</span></p>
-            </div>
-          </div>
-          <div class="i-card">
-            <div class="i-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
                 <polyline points="9 22 9 12 15 12 15 22" />
               </svg>
@@ -1969,22 +1986,15 @@
     </div>
   </section>
 
-  <section class="sm-cta">
-    <div class="sm-cta-wrap fu">
-      <h3>Posjetite naše društvene mreže</h3>
-      <p>Pratite nas i budite u toku sa novostima iz Škole Kur'ana Selsebil</p>
-      <div class="sm-buttons">
-        <a class="sm-btn youtube" href="https://www.youtube.com/@skolakuranaselsebilnovipazar" target="_blank" rel="noopener noreferrer">
+  <section class="yt-cta">
+    <div class="si">
+      <div class="yt-cta-wrap fu">
+        <h3>Posetite naš YouTube kanal</h3>
+        <p>Pratite korisne sadržaje, novosti i edukativne klipove Škole Kur'ana Selsebil.</p>
+        <a class="btn-yt" href="https://www.youtube.com/@skolakuranaselsebilnovipazar" target="_blank"
+          rel="noopener noreferrer">
           <i class="fa-brands fa-youtube"></i>
-          YouTube
-        </a>
-        <a class="sm-btn instagram" href="https://www.instagram.com/skola_selsebil/" target="_blank" rel="noopener noreferrer">
-          <i class="fa-brands fa-instagram"></i>
-          Instagram
-        </a>
-        <a class="sm-btn facebook" href="https://www.facebook.com/skSelsebil" target="_blank" rel="noopener noreferrer">
-          <i class="fa-brands fa-facebook-f"></i>
-          Facebook
+          Posetite YouTube kanal
         </a>
       </div>
     </div>
@@ -2047,9 +2057,6 @@
           <li><a href="https://maps.app.goo.gl/mGRq9ZQX3AcoF8jH8" target="_blank">Novi Pazar, Srbija</a></li>
           <li><a href="https://www.youtube.com/@skolakuranaselsebilnovipazar" target="_blank">YouTube kanal</a></li>
         </ul>
-        <div style="margin-top:1.5rem;font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.7">
-          <i class="fa-regular fa-clock"></i> Pon, Uto, Čet<br>10:00 – 18:00
-        </div>
       </div>
     </div>
     <div class="f-bot">
@@ -2104,6 +2111,482 @@
       });
     }, 50);
   </script>
+
+<script>
+/**
+ * Iframe 元素高亮注入脚本
+ * 需要在目标网站中引入此脚本来支持跨域 iframe 高亮功能
+ *
+ * 使用方法：
+ * 1. 将此脚本添加到目标网站的 HTML 中
+ * 2. 或通过浏览器扩展、用户脚本等方式注入
+ */
+
+(function () {
+  "use strict";
+
+  // 检查是否在 iframe 中
+  if (window.self === window.top) {
+    return; // 不在 iframe 中，不执行
+  }
+
+  // 检查是否已经初始化过
+  if (window.__iframeHighlightInitialized) {
+    return;
+  }
+  window.__iframeHighlightInitialized = true;
+  console.log("Iframe 高亮脚本已加载");
+
+  // 创建高亮覆盖层
+  var overlay = document.createElement("div");
+  overlay.id = "iframe-highlight-overlay";
+  overlay.style.cssText = "\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100vw;\n    height: 100vh;\n    pointer-events: none;\n    z-index: 999999;\n    overflow: hidden;\n  ";
+
+  // 创建悬停高亮框（虚线边框）
+  var highlightBox = document.createElement("div");
+  highlightBox.id = "iframe-highlight-box";
+  highlightBox.style.cssText = "\n    position: absolute;\n    border: 2px dashed #007AFF;\n    background: rgba(0, 122, 255, 0.08);\n    pointer-events: none;\n    display: none;\n    transition: all 0.1s ease;\n    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8);\n    border-radius: 2px;\n  ";
+
+  // 创建选中节点的常驻高亮框（实线边框）
+  var selectedBox = document.createElement("div");
+  selectedBox.id = "iframe-selected-box";
+  selectedBox.style.cssText = "\n    position: absolute;\n    border: 2px solid #007AFF;\n    pointer-events: none;\n    display: none;\n    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 107, 53, 0.4);\n    border-radius: 2px;\n    z-index: 1000000;\n  ";
+
+  // 创建悬停标签显示
+  var tagLabel = document.createElement("div");
+  tagLabel.id = "iframe-tag-label";
+  tagLabel.style.cssText = "\n    position: absolute;\n    background: #007AFF;\n    color: white;\n    padding: 2px 6px;\n    font-size: 11px;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\n    border-radius: 2px;\n    pointer-events: none;\n    display: none;\n    white-space: nowrap;\n    z-index: 1000001;\n    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);\n    font-weight: 500;\n  ";
+
+  // 创建选中节点标签
+  var selectedLabel = document.createElement("div");
+  selectedLabel.id = "iframe-selected-label";
+  selectedLabel.style.cssText = "\n    position: absolute;\n    background: #007AFF;\n    color: white;\n    padding: 3px 8px;\n    font-size: 11px;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\n    border-radius: 3px;\n    pointer-events: none;\n    display: none;\n    white-space: nowrap;\n    z-index: 1000002;\n    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);\n    font-weight: 600;\n  ";
+  overlay.appendChild(highlightBox);
+  overlay.appendChild(selectedBox);
+  overlay.appendChild(tagLabel);
+  overlay.appendChild(selectedLabel);
+  document.body.appendChild(overlay);
+
+  // 存储当前选中的元素
+  var selectedElement = null;
+  var highlightEnabled = false;
+
+  // 更新选中元素的高亮显示
+  function updateSelectedHighlight(element) {
+    console.log("updateSelectedHighlight called with:", element);
+    if (!element) {
+      selectedBox.style.display = "none";
+      selectedLabel.style.display = "none";
+      selectedElement = null;
+      console.log("Cleared selected highlight");
+      return;
+    }
+    selectedElement = element;
+    var rect = element.getBoundingClientRect();
+    console.log("Selected element rect:", rect);
+
+    // 更新选中高亮框位置
+    selectedBox.style.display = "block";
+    selectedBox.style.left = "".concat(rect.left - 2, "px");
+    selectedBox.style.top = "".concat(rect.top - 2, "px");
+    selectedBox.style.width = "".concat(rect.width + 4, "px");
+    selectedBox.style.height = "".concat(rect.height + 4, "px");
+
+    // 更新选中标签位置和内容
+    selectedLabel.style.display = "block";
+    selectedLabel.textContent = "\u2713 <".concat(element.tagName.toLowerCase(), ">");
+
+    // 计算标签位置，确保不超出视窗
+    var labelTop = rect.top - 28;
+    var labelLeft = rect.left;
+
+    // 如果标签会超出顶部，显示在元素下方
+    if (labelTop < 5) {
+      labelTop = rect.bottom + 5;
+    }
+
+    // 如果标签会超出右侧，向左调整
+    var labelWidth = selectedLabel.offsetWidth || 100; // 预估宽度
+    if (labelLeft + labelWidth > window.innerWidth - 10) {
+      labelLeft = window.innerWidth - labelWidth - 10;
+    }
+    selectedLabel.style.left = "".concat(Math.max(5, labelLeft), "px");
+    selectedLabel.style.top = "".concat(labelTop, "px");
+    console.log("Selected highlight positioned at:", {
+      left: selectedBox.style.left,
+      top: selectedBox.style.top,
+      width: selectedBox.style.width,
+      height: selectedBox.style.height
+    });
+  }
+  function getElementSelector(element) {
+    if (!(element instanceof Element)) throw new Error('Argument must be a DOM element');
+    var segments = [];
+    var current = element;
+    while (current !== document.documentElement) {
+      var selector = '';
+      // 优先检查唯一ID
+      if (current.id && document.querySelectorAll("#".concat(current.id)).length === 1) {
+        segments.unshift("#".concat(current.id));
+        break; // ID唯一，无需继续向上
+      }
+
+      // 生成类名选择器（取第一个有效类名）
+      var classes = Array.from(current.classList).filter(function (c) {
+        return !c.startsWith('js-');
+      });
+      var className = classes.length > 0 ? ".".concat(classes[0]) : '';
+
+      // 生成位置索引（nth-child）
+      var tag = current.tagName.toLowerCase();
+      if (!className) {
+        var siblings = Array.from(current.parentNode.children);
+        var index = siblings.findIndex(function (el) {
+          return el === current;
+        }) + 1;
+        selector = "".concat(tag, ":nth-child(").concat(index, ")");
+      } else {
+        selector = className;
+      }
+      segments.unshift(selector);
+      current = current.parentElement;
+    }
+
+    // 处理根元素
+    if (current === document.documentElement) {
+      segments.unshift('html');
+    }
+    return segments.join(' > ');
+  }
+
+  // 获取元素文本内容
+  function getElementText(element) {
+    var _element$textContent;
+    if (element.tagName === "INPUT") {
+      return element.value || element.placeholder || "";
+    }
+    if (element.tagName === "TEXTAREA") {
+      return element.value || element.placeholder || "";
+    }
+    var text = ((_element$textContent = element.textContent) === null || _element$textContent === void 0 ? void 0 : _element$textContent.trim()) || "";
+    return text.length > 50 ? text.substring(0, 50) + "..." : text;
+  }
+
+  // 获取元素属性信息
+  function getElementAttributes(element) {
+    var attrs = {};
+    for (var i = 0; i < element.attributes.length; i++) {
+      var attr = element.attributes[i];
+      attrs[attr.name] = attr.value;
+    }
+    return attrs;
+  }
+
+  // 鼠标悬停事件处理
+  function handleMouseOver(e) {
+    if (!highlightEnabled) return;
+    var target = e.target;
+    if (!target || target === overlay || target === highlightBox || target === tagLabel || target === selectedBox || target === selectedLabel) {
+      return;
+    }
+
+    // 避免高亮 html 和 body 元素
+    if (target === document.documentElement || target === document.body) {
+      return;
+    }
+
+    // 如果是已选中的元素，不显示悬停高亮
+    if (target === selectedElement) {
+      highlightBox.style.display = "none";
+      tagLabel.style.display = "none";
+      return;
+    }
+    var rect = target.getBoundingClientRect();
+    var selector = getElementSelector(target);
+    var text = getElementText(target);
+    var attributes = getElementAttributes(target);
+
+    // 更新悬停高亮框位置
+    highlightBox.style.display = "block";
+    highlightBox.style.left = "".concat(rect.left - 2, "px");
+    highlightBox.style.top = "".concat(rect.top - 2, "px");
+    highlightBox.style.width = "".concat(rect.width + 4, "px");
+    highlightBox.style.height = "".concat(rect.height + 4, "px");
+
+    // 更新标签位置和内容
+    tagLabel.style.display = "block";
+    tagLabel.textContent = "<".concat(target.tagName.toLowerCase(), ">");
+
+    // 计算标签位置，确保不超出视窗
+    var labelTop = rect.top - 22;
+    var labelLeft = rect.left;
+
+    // 如果标签会超出顶部，显示在元素下方
+    if (labelTop < 0) {
+      labelTop = rect.bottom + 5;
+    }
+
+    // 如果标签会超出右侧，向左调整
+    if (labelLeft + tagLabel.offsetWidth > window.innerWidth) {
+      labelLeft = window.innerWidth - tagLabel.offsetWidth - 5;
+    }
+    tagLabel.style.left = "".concat(Math.max(0, labelLeft), "px");
+    tagLabel.style.top = "".concat(labelTop, "px");
+
+    // 发送消息到父窗口
+    var elementInfo = {
+      tagName: target.tagName.toLowerCase(),
+      rect: {
+        left: rect.left,
+        top: rect.top,
+        right: rect.right,
+        bottom: rect.bottom,
+        width: rect.width,
+        height: rect.height,
+        x: rect.x,
+        y: rect.y
+      },
+      selector: selector,
+      text: text,
+      attributes: attributes,
+      url: window.location.href,
+      path: window.location.pathname,
+      timestamp: Date.now()
+    };
+    try {
+      window.parent.postMessage({
+        type: "iframe-element-hover",
+        data: elementInfo,
+        source: "iframe-highlight-injector"
+      }, "*");
+    } catch (error) {
+      console.warn("无法发送消息到父窗口:", error);
+    }
+  }
+
+  // 鼠标离开事件处理
+  function handleMouseOut(e) {
+    if (!highlightEnabled) return;
+    var relatedTarget = e.relatedTarget;
+
+    // 如果鼠标移动到高亮相关元素上，不隐藏高亮
+    if (relatedTarget && (relatedTarget === highlightBox || relatedTarget === tagLabel || relatedTarget === overlay || relatedTarget === selectedBox || relatedTarget === selectedLabel)) {
+      return;
+    }
+    highlightBox.style.display = "none";
+    tagLabel.style.display = "none";
+    try {
+      window.parent.postMessage({
+        type: "iframe-element-hover",
+        data: null,
+        source: "iframe-highlight-injector"
+      }, "*");
+    } catch (error) {
+      console.warn("无法发送消息到父窗口:", error);
+    }
+  }
+
+  // 点击事件处理
+  function handleClick(e) {
+    var target = e.target;
+    if (!target || target === overlay || target === highlightBox || target === tagLabel || target === selectedBox || target === selectedLabel) {
+      return;
+    }
+
+    // 避免处理 html 和 body 元素
+    if (target === document.documentElement || target === document.body) {
+      return;
+    }
+
+    // 检查是否是交互元素，这些元素需要保留默认行为
+    var isInteractiveElement = ['input', 'textarea', 'select', 'button', 'a'].includes(target.tagName.toLowerCase());
+
+    // 如果高亮功能启用，对于非交互元素阻止默认行为和事件传播
+    if (highlightEnabled) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    var rect = target.getBoundingClientRect();
+    var selector = getElementSelector(target);
+    var text = getElementText(target);
+    var attributes = getElementAttributes(target);
+    console.log("Element clicked:", {
+      tagName: target.tagName,
+      selector: selector,
+      rect: rect
+    });
+
+    // 立即更新选中高亮
+    updateSelectedHighlight(target);
+
+    // 隐藏悬停高亮，因为现在是选中状态
+    highlightBox.style.display = "none";
+    tagLabel.style.display = "none";
+    var elementInfo = {
+      tagName: target.tagName.toLowerCase(),
+      rect: {
+        left: rect.left,
+        top: rect.top,
+        right: rect.right,
+        bottom: rect.bottom,
+        width: rect.width,
+        height: rect.height,
+        x: rect.x,
+        y: rect.y
+      },
+      selector: selector,
+      text: text,
+      attributes: attributes,
+      url: window.location.href,
+      path: window.location.pathname,
+      timestamp: Date.now()
+    };
+    try {
+      window.parent.postMessage({
+        type: "iframe-element-click",
+        data: elementInfo,
+        source: "iframe-highlight-injector"
+      }, "*");
+    } catch (error) {
+      console.warn("无法发送消息到父窗口:", error);
+    }
+  }
+
+  // 监听来自父窗口的消息
+  function handleParentMessage(event) {
+    console.log("Received message from parent:", event.data);
+    if (event.data.type === "iframe-highlight-toggle") {
+      var enabled = event.data.enabled;
+      console.log("Highlight toggle:", enabled);
+      if (enabled) {
+        enableHighlight();
+      } else {
+        disableHighlight();
+      }
+    } else if (event.data.type === "enable-iframe-highlight") {
+      console.log("Enable iframe highlight");
+      enableHighlight();
+    } else if (event.data.type === "disable-iframe-highlight") {
+      console.log("Disable iframe highlight");
+      disableHighlight();
+    } else if (event.data.type === "toggle-iframe-highlight") {
+      var _enabled = event.data.enabled !== undefined ? event.data.enabled : !highlightEnabled;
+      console.log("Toggle iframe highlight to:", _enabled);
+      if (_enabled) {
+        enableHighlight();
+      } else {
+        disableHighlight();
+      }
+    } else if (event.data.type === "update-selected-element") {
+      var selector = event.data.selector;
+      console.log("Update selected element with selector:", selector);
+      if (selector) {
+        try {
+          var element = document.querySelector(selector);
+          console.log("Found element by selector:", element);
+          updateSelectedHighlight(element);
+        } catch (error) {
+          console.warn("Failed to select element:", error);
+          updateSelectedHighlight(null);
+        }
+      } else {
+        updateSelectedHighlight(null);
+      }
+    } else if (event.data.type === "clear-selected-element") {
+      console.log("Clear selected element");
+      updateSelectedHighlight(null);
+    }
+  }
+
+  // 启用高亮功能
+  function enableHighlight() {
+    console.log("Enabling highlight");
+    document.addEventListener("mouseover", handleMouseOver, true);
+    document.addEventListener("mouseout", handleMouseOut, true);
+    document.addEventListener("click", handleClick, true);
+    highlightEnabled = true;
+    overlay.style.display = "block";
+  }
+
+  // 禁用高亮功能
+  function disableHighlight() {
+    console.log("Disabling highlight");
+    highlightEnabled = false;
+    // 保持事件监听器，但通过 highlightEnabled 变量控制行为
+    // 这样可以保留选中状态的显示
+    highlightBox.style.display = "none";
+    tagLabel.style.display = "none";
+    // 不隐藏 selectedBox 和 selectedLabel，保留选中状态
+  }
+
+  // 完全禁用高亮功能（移除所有监听器）
+  function fullyDisableHighlight() {
+    console.log("Fully disabling highlight");
+    highlightEnabled = false;
+    document.removeEventListener("mouseover", handleMouseOver, true);
+    document.removeEventListener("mouseout", handleMouseOut, true);
+    document.removeEventListener("click", handleClick, true);
+    overlay.style.display = "none";
+    highlightBox.style.display = "none";
+    tagLabel.style.display = "none";
+    selectedBox.style.display = "none";
+    selectedLabel.style.display = "none";
+  }
+
+  // 添加事件监听
+  enableHighlight();
+  window.addEventListener("message", handleParentMessage);
+
+  // 暴露全局函数供外部调用
+  window.__iframeHighlightControl = {
+    enable: enableHighlight,
+    disable: disableHighlight,
+    fullyDisable: fullyDisableHighlight,
+    isEnabled: function isEnabled() {
+      return highlightEnabled;
+    },
+    getSelectedElement: function getSelectedElement() {
+      return selectedElement;
+    },
+    updateSelected: updateSelectedHighlight,
+    // 通过消息发送开关控制
+    sendToggleMessage: function sendToggleMessage(enabled) {
+      window.parent.postMessage({
+        type: 'iframe-highlight-status',
+        enabled: enabled || highlightEnabled,
+        source: 'iframe-highlight-injector'
+      }, '*');
+    }
+  };
+
+  // 通知父窗口脚本已加载
+  try {
+    window.parent.postMessage({
+      type: "iframe-highlight-ready",
+      data: {
+        url: window.location.href,
+        userAgent: navigator.userAgent,
+        timestamp: Date.now()
+      },
+      source: "iframe-highlight-injector"
+    }, "*");
+  } catch (error) {
+    console.warn("无法发送就绪消息到父窗口:", error);
+  }
+
+  // 清理函数
+  window.__iframeHighlightCleanup = function () {
+    fullyDisableHighlight();
+    window.removeEventListener("message", handleParentMessage);
+    if (overlay.parentElement) {
+      overlay.parentElement.removeChild(overlay);
+    }
+    delete window.__iframeHighlightInitialized;
+    delete window.__iframeHighlightCleanup;
+  };
+})();
+
+</script>
 
 <script>
 /**
